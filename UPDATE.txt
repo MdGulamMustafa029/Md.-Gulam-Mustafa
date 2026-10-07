@@ -1,0 +1,13 @@
+PHOTO FRAME ANIMATION UPDATE
+
+1. Extract this ZIP.
+2. Open your teacher-portfolio-preview GitHub repository.
+3. Choose Add file > Upload files.
+4. Upload the enclosed styles.css directly to the repository root, replacing the existing styles.css. Do not upload this outer folder.
+5. Commit changes. After GitHub Pages finishes publishing, press Ctrl+F5 on the website.
+
+Only styles.css needs replacing. This is the complete stylesheet for the latest navy/sapphire portfolio, with the new frame animation added.
+
+The thin blue-white highlight circulates outside the frame every 12 seconds. The portrait stays still. The Reduce motion control and operating-system reduced-motion preference stop the circulation. Browsers without support for the animated angle show a static highlight.
+
+Source and CSS structure were checked. A live browser preview was not available.
