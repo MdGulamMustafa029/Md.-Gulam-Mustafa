@@ -133,3 +133,223 @@ body{background:#FFFFFF;color:var(--ink)}
   .portrait-frame::before,
   .portrait-frame::after { display: none; }
 }
+
+
+/* ========================================================================
+   Portfolio refinement · 2026
+   Designed against the live portfolio sections while preserving the
+   original HTML class names and the existing academic sapphire palette.
+   ======================================================================== */
+
+/* Shared foundations and more consistent, fluid rhythm */
+:root {
+  --surface: #fff;
+  --surface-soft: #f5f8fd;
+  --surface-border: #d7e2f0;
+  --ink-strong: #142744;
+  --focus-ring: #7fbbff;
+  --shadow-card: 0 16px 42px rgba(20, 45, 80, .07);
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+}
+html { scroll-padding-top: 94px; }
+body { min-width: 320px; -webkit-font-smoothing: antialiased; }
+.container { width: min(1180px, calc(100% - 80px)); }
+.section { padding-block: clamp(72px, 7.8vw, 112px); }
+.section-label { font-size: 12px; letter-spacing: 1.65px; }
+h1, h2, h3, h4 { text-wrap: balance; }
+p { overflow-wrap: break-word; }
+a, button { transition: color .2s ease, background-color .2s ease, border-color .2s ease, transform .25s var(--ease-out); }
+:where(a, button, input, textarea, select, summary):focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+:where(img, svg) { max-width: 100%; }
+::selection { color: #101d36; background: #bcd9ff; }
+
+/* Navigation: stable, accessible touch targets */
+.header { box-shadow: 0 4px 22px rgba(5, 20, 45, .09); }
+.nav-wrap { min-height: 78px; gap: 18px; }
+.header nav { gap: clamp(13px, 1.75vw, 28px); }
+.header nav a { position: relative; min-height: 44px; display: inline-flex; align-items: center; }
+.header nav a:not(.nav-contact)::after {
+  content: ''; position: absolute; bottom: 6px; left: 0; right: 100%;
+  height: 2px; background: #bcd9ff; transition: right .25s var(--ease-out);
+}
+.header nav a:not(.nav-contact):hover::after,
+.header nav a.current:not(.nav-contact)::after { right: 0; }
+.nav-contact:hover { background: rgba(188,217,255,.13); border-color: #bcd9ff; }
+
+/* Hero: improve readability, keep the original portrait and motion */
+.hero-grid { min-height: min(660px, 76svh); gap: clamp(35px, 6vw, 85px); }
+.hero-copy { min-width: 0; }
+.hero h1 { letter-spacing: -.045em; line-height: 1.055; overflow-wrap: normal; }
+.hero-description { max-width: 620px; line-height: 1.7; }
+.hero-actions .button { min-height: 46px; }
+.hero .secondary:hover { border-color: #d6e6fb; }
+.hero .social-links a { border-radius: 5px; }
+.hero .social-links a:hover { transform: translateY(-2px); }
+.portrait-wrap { min-width: 0; }
+.portrait-frame { max-width: 100%; }
+.hero-bottom { align-items: center; flex-wrap: wrap; }
+
+/* Content sections use the same visual language */
+.section-heading { align-items: end; gap: clamp(20px, 4vw, 55px); }
+.section-heading > p { line-height: 1.7; }
+.about-grid { gap: clamp(35px, 6vw, 90px); }
+.about-facts { gap: 18px; }
+.about-facts strong { color: var(--ink-strong); }
+.phd-label { line-height: 1.5; }
+.research-card, .grants, .current-research { transition: box-shadow .25s ease, border-color .25s ease, transform .25s var(--ease-out); }
+.research-card:hover { box-shadow: var(--shadow-card); transform: translateY(-4px); }
+.current-research { overflow: hidden; }
+.current-research .details-intro { line-height: 1.75; }
+.ongoing-item h4 { overflow-wrap: anywhere; }
+
+/* Publication filter/search controls and long academic titles */
+.publication-controls { flex-wrap: wrap; }
+.filters button { transition: background .2s ease, color .2s ease, border-color .2s ease; }
+.filters button:hover:not([aria-pressed='true']) { background: #e8f0fb; }
+#paper-search { min-height: 46px; transition: border-color .2s, box-shadow .2s; }
+#paper-search:focus { border-color: #4e87c6; box-shadow: 0 0 0 3px rgba(69,132,203,.13); outline: none; }
+.paper { grid-template-columns: 45px minmax(0,1fr); }
+.paper h3 { overflow-wrap: anywhere; text-wrap: pretty; }
+.paper .text-link { min-height: 40px; }
+
+/* Project rows adapt to additional project metadata and figure links */
+.project { grid-template-columns: minmax(165px, 235px) minmax(0, 1fr); }
+.project > * { min-width: 0; }
+.project h3 { text-wrap: pretty; }
+.project a.text-link, .timeline a.text-link { max-width: 100%; }
+.project .tags { padding-top: 16px; }
+.project:hover .project-side .badge { border-color: #acc8e9; }
+
+/* Career timeline and the detailed tool / community blocks */
+.timeline article { padding-left: 2px; }
+.timeline h3, .service-card h3 { text-wrap: pretty; }
+.service-grid { gap: clamp(18px, 3vw, 32px); }
+.skills-grid { gap: 36px 28px; }
+.skill { min-width: 0; }
+.skill p { line-height: 1.75; }
+
+/* Contact form: supports standard form markup without requiring JS */
+.contact form, .contact-form, .message-form {
+  width: 100%; min-width: 0;
+}
+.contact :is(form, .contact-form, .message-form) :is(label) {
+  display: block; margin-bottom: 7px; font-size: 14px;
+  font-weight: 600; color: #e9f2ff;
+}
+.contact :is(input:not([type='hidden']):not([type='checkbox']):not([type='radio']), textarea, select),
+.contact-form :is(input:not([type='hidden']), textarea, select) {
+  width: 100%; max-width: 100%; min-height: 48px;
+  padding: 12px 14px; border: 1px solid #8199b9; border-radius: 9px;
+  background: rgba(255,255,255,.08); color: #fff;
+  font: inherit; font-size: 16px;
+  transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.contact :is(input, textarea)::placeholder { color: #c0d0e4; opacity: 1; }
+.contact textarea, .contact-form textarea { min-height: 145px; resize: vertical; }
+.contact :is(input, textarea, select):focus-visible {
+  outline: none; border-color: #c2e0ff; background: rgba(255,255,255,.13);
+  box-shadow: 0 0 0 3px rgba(188,217,255,.18);
+}
+.contact :is(form, .contact-form, .message-form) :is(button[type='submit'], input[type='submit']) {
+  min-height: 48px; border: 1px solid #fff; border-radius: 30px;
+  background: #fff; color: #172d4a; font: inherit; font-weight: 700;
+  padding: 11px 24px; cursor: pointer;
+}
+.contact :is(form, .contact-form, .message-form) :is(button[type='submit'], input[type='submit']):hover {
+  background: #e2eeff; transform: translateY(-2px);
+}
+.contact form :is(p, small) { line-height: 1.65; }
+.contact .contact-links { min-width: 0; }
+.contact .email-link { overflow-wrap: anywhere; }
+
+/* Image gallery / lightbox: optional support for the live site's figures */
+:where(.gallery-grid, .figure-grid, .project-gallery) {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 16px;
+}
+:where(.gallery-grid, .figure-grid, .project-gallery) :is(figure, a) { min-width: 0; }
+:where(.gallery-grid, .figure-grid, .project-gallery) img {
+  display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover;
+  border-radius: 10px; border: 1px solid #d7e2f0;
+}
+:where(.gallery-grid, .figure-grid, .project-gallery) figcaption {
+  margin-top: 9px; color: var(--muted); font-size: 13px; line-height: 1.5;
+}
+:where(.lightbox, .image-modal, .gallery-modal) {
+  max-width: min(1000px, calc(100vw - 32px)); max-height: 95dvh;
+  border: 1px solid #536987; border-radius: 14px;
+  padding: 16px; background: #101d36; color: #fff;
+}
+:where(.lightbox, .image-modal, .gallery-modal)::backdrop { background: rgba(5,14,31,.89); }
+:where(.lightbox, .image-modal, .gallery-modal) img { max-height: 77dvh; width: auto; object-fit: contain; }
+:where(.lightbox, .image-modal, .gallery-modal) button { min-width: 40px; min-height: 40px; }
+
+/* Flexible styling for leadership, recognition and award cards */
+:where(.leadership-grid, .community-grid, .awards-grid, .recognition-grid) {
+  display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 22px;
+}
+:where(.leadership-card, .community-card, .award-card, .recognition-card) {
+  min-width: 0; padding: 27px; border: 1px solid var(--surface-border);
+  border-radius: var(--radius); background: var(--surface);
+}
+:where(.leadership-card, .community-card, .award-card, .recognition-card) p {
+  color: var(--muted); font-size: 15px; line-height: 1.75;
+}
+
+/* Large and intermediate screens */
+@media (max-width: 1050px) {
+  .container { width: calc(100% - 56px); }
+  .hero-grid { min-height: 0; }
+  .project { grid-template-columns: 190px minmax(0,1fr); gap: 28px; }
+  .contact-grid { gap: 36px; }
+}
+@media (max-width: 760px) {
+  html { scroll-padding-top: 78px; }
+  .container { width: calc(100% - 40px); }
+  .section { padding-block: 66px; }
+  .nav-wrap { min-height: 70px; }
+  .header nav a { min-height: 44px; }
+  .js nav { max-height: calc(100dvh - 70px); overflow-y: auto; }
+  .header nav a:not(.nav-contact)::after { display: none; }
+  .hero-grid { gap: 34px; padding-top: 44px; padding-bottom: 36px; }
+  .hero h1 { font-size: clamp(50px, 11vw, 72px); letter-spacing: -.045em; }
+  .hero-description { font-size: 17px; }
+  .hero-bottom { justify-content: flex-start; }
+  .portrait-wrap { width: min(100%, 355px); }
+  .portrait-frame { height: 390px; }
+  .about-grid, .education-grid, .experience-grid, .contact-grid { grid-template-columns: 1fr; }
+  .paper { grid-template-columns: 26px minmax(0,1fr); }
+  .project { grid-template-columns: 1fr; gap: 16px; }
+  .current-research { margin-top: 28px; }
+  .section-heading { margin-bottom: 32px; }
+  :where(.leadership-grid, .community-grid, .awards-grid, .recognition-grid) { grid-template-columns: 1fr; }
+  .contact :is(form, .contact-form, .message-form) { margin-top: 12px; }
+  footer { align-items: flex-start; }
+}
+@media (max-width: 420px) {
+  .container { width: calc(100% - 32px); }
+  .hero h1 { font-size: clamp(46px, 11.8vw, 54px); }
+  .hero-actions { gap: 9px; }
+  .hero-actions .button { flex: 1 1 auto; font-size: 12px; gap: 8px; }
+  .portrait-frame { height: 350px; }
+  .research-card, .grants { padding: 22px; }
+  .current-research { padding: 22px 17px; }
+  .paper h3 { font-size: 18px; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .hero-bottom { font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+@media print {
+  .header, .menu-toggle, :where(.lightbox, .image-modal, .gallery-modal) { display: none !important; }
+  .section { padding-block: 30px; }
+  .container { width: 100%; }
+  .research-card, .project, .paper, .degree, .timeline article { break-inside: avoid; }
+  .research-card, .grants, .current-research { box-shadow: none; }
+  .contact :is(input, textarea) { background: white; color: black; }
+}
