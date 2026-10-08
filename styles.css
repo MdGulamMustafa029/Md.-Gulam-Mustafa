@@ -2,9 +2,9 @@
    MD. GULAM MUSTAFA — ACADEMIC PORTFOLIO
    Professional redesign · October 2026
    Drop-in stylesheet for the existing GitHub Pages HTML.
-   Typography: Inter (UI) + Source Serif 4 (editorial headings).
+   Typography: Inter (UI + hero) and Source Serif 4 (academic headings).
    ====================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;650;700;750;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700;750;800&family=Source+Serif+4:ital,wght@0,400;0,500;0,550;0,600;0,700;1,400;1,500;1,600&display=swap');
 
 :root {
   color-scheme: light;
@@ -769,4 +769,166 @@ h3{font-weight:650;letter-spacing:-.035em}
 .motion-off .portrait-wrap::after { animation:none!important;will-change:auto; }
 @media print {
   .portrait-wrap::before,.portrait-wrap::after { display:none!important; }
+}
+
+/* =======================================================================
+   ACADEMIC TYPOGRAPHY REFINEMENT — OCTOBER 2026
+   Readable scholarly editorial type; preserves the existing orbit and layout.
+   Typeface pairing: Inter (UI + hero) / Source Serif 4 (scholarly display).
+   ======================================================================= */
+:root {
+  --font-sans: 'Inter', 'Segoe UI', Arial, sans-serif;
+  --font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --type-body: clamp(15.5px, 0.28vw + 14.5px, 17px);
+  --type-small: 13px;
+  --type-lead: clamp(17px, 0.5vw + 15.5px, 19px);
+  --type-section: clamp(35px, 3.65vw, 52px);
+  --type-card: clamp(21px, 1.65vw, 25px);
+}
+body {
+  font-family: var(--font-sans);
+  font-size: var(--type-body);
+  line-height: 1.76;
+  font-weight: 400;
+  letter-spacing: -.012em;
+  font-optical-sizing: auto;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+:where(button, input, select, textarea) { font-family: var(--font-sans); }
+:where(h1,h2,h3,h4) { text-wrap: balance; font-optical-sizing: auto; }
+p { text-wrap: pretty; }
+/* Identity keeps the bold modern styling of the visual reference. */
+.hero h1 {
+  font-family: var(--font-sans);
+  font-size: clamp(51px, 6.1vw, 84px);
+  font-weight: 750;
+  letter-spacing: -.064em;
+  line-height: 1.07;
+}
+.hero h1 em { font-family: inherit; font-weight: inherit; letter-spacing: inherit; }
+.hero-copy > .eyebrow,
+.hero .eyebrow {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .135em;
+  line-height: 1.5;
+}
+.hero-role { font-family: var(--font-sans); font-size: clamp(17px, 1.3vw, 19px); font-weight: 550; line-height: 1.55; letter-spacing: -.017em; }
+.hero-description { font-size: clamp(16px, 1.2vw, 18px); font-weight: 400; line-height: 1.8; letter-spacing: -.008em; max-width: 57ch; }
+.hero-actions .button { font-size: 14px; font-weight: 650; letter-spacing: -.01em; }
+.social-links { font-size: 13px; font-weight: 450; }
+.portrait-wrap figcaption strong { font-size: clamp(17px, 1.55vw, 20px); font-weight: 500; letter-spacing: -.027em; }
+.portrait-wrap figcaption span, .portrait-note { font-size: 10px; font-weight: 600; letter-spacing: .13em; }
+/* Navigation remains compact and makes room for research links. */
+.header nav { font-family: var(--font-sans); font-size: 13.5px; font-weight: 550; letter-spacing: -.008em; }
+.nav-contact { font-size: 13px; font-weight: 600; }
+.brand { font-family: var(--font-sans); font-weight: 750; letter-spacing: -.055em; }
+/* Editorial section hierarchy, with controlled line length. */
+h2,
+.current-heading h3 {
+  font-family: var(--font-serif);
+  font-weight: 550;
+  letter-spacing: -.031em;
+  line-height: 1.16;
+}
+h2 { font-size: var(--type-section); max-width: 20ch; }
+h2 em { font-family: inherit; font-weight: inherit; font-style: italic; letter-spacing: inherit; }
+h3 { font-weight: 600; letter-spacing: -.027em; line-height: 1.35; }
+.section-label, .eyebrow, .card-index {
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 750;
+  letter-spacing: .115em;
+  line-height: 1.55;
+}
+.lead { font-size: var(--type-lead); line-height: 1.77; max-width: 52ch; }
+.section-heading > p { font-size: 16px; line-height: 1.77; max-width: 44ch; }
+.about-copy > p { font-size: var(--type-body); line-height: 1.82; max-width: 69ch; }
+.about-facts strong { font-size: 16px; font-weight: 700; letter-spacing: -.027em; }
+.about-facts span, .location-line { font-size: 14px; line-height: 1.75; }
+/* Research: stronger headings, comfortable paragraph density. */
+.research-card h3,
+.project h3,
+.timeline h3,
+.degree h3,
+.grants > h3,
+.skill h3,
+.service-card h3 {
+  font-family: var(--font-serif);
+  font-weight: 550;
+  letter-spacing: -.023em;
+  line-height: 1.28;
+}
+.research-card h3 { font-size: var(--type-card); }
+.research-card > p { font-size: 15.5px; line-height: 1.83; }
+.current-heading h3 { font-size: clamp(28px, 2.85vw, 37px); }
+.current-research .details-intro { font-size: 16px; line-height: 1.82; }
+.ongoing-item h4 { font-family: var(--font-sans); font-size: 16px; font-weight: 600; letter-spacing: -.015em; line-height: 1.72; }
+.tags span, .badge { font-family: var(--font-sans); font-size: 11.5px; font-weight: 600; letter-spacing: .005em; }
+/* Publications should resemble a readable journal/bibliography index. */
+.paper { line-height: 1.68; }
+.paper h3 {
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 1.8vw, 24px);
+  font-weight: 550;
+  letter-spacing: -.016em;
+  line-height: 1.42;
+  max-width: 72ch;
+}
+.paper-number { font-family: var(--font-serif); font-size: 23px; }
+.paper-meta { font-family: var(--font-sans); font-size: 13px; font-weight: 700; line-height: 1.6; letter-spacing: .006em; }
+.authors { font-size: 14px; line-height: 1.76; }
+.paper-detail { font-size: 13px; line-height: 1.7; }
+.paper .text-link, .text-link { font-family: var(--font-sans); font-size: 14px; font-weight: 700; }
+.filters button, #paper-search { font-family: var(--font-sans); font-size: 14px; }
+/* Professional roles, credentials, awards and contact. */
+.project h3 { font-size: clamp(22px, 1.8vw, 26px); }
+.project > div > p:not(.eyebrow) { font-size: 15.5px; line-height: 1.82; }
+.timeline h3 { font-size: 25px; }
+.timeline h4 { font-family: var(--font-sans); font-size: 16px; font-weight: 600; letter-spacing: -.012em; }
+.timeline p:last-child, .service-card > p:last-child { font-size: 15px; line-height: 1.8; }
+.service-card h3 { font-size: 22px; }
+.degree h3 { font-size: 24px; }
+.degree strong { font-family: var(--font-serif); font-size: 25px; font-weight: 550; }
+.grants > h3 { font-size: 28px; }
+.grants h4 { font-family: var(--font-serif); font-size: 19px; font-weight: 550; line-height: 1.38; }
+.skill h3 { font-size: 22px; }
+.skill p { font-size: 15px; line-height: 1.8; }
+.contact h2 { max-width: 19ch; }
+.contact-grid > div > p { font-size: 16px; line-height: 1.82; }
+.contact-links a { font-size: 16px; font-weight: 550; }
+.contact-links small, footer { font-size: 13px; line-height: 1.7; }
+.email-link { font-family: var(--font-sans); font-size: clamp(17px, 1.9vw, 23px); font-weight: 600; letter-spacing: -.025em; }
+@media (max-width: 1050px) {
+  .hero h1 { font-size: clamp(51px, 6vw, 69px); }
+  .paper h3 { font-size: 21px; }
+}
+@media (max-width: 760px) {
+  body { font-size: 15.5px; line-height: 1.75; }
+  .hero h1 { font-size: clamp(46px, 11.25vw, 67px); line-height: 1.085; letter-spacing: -.056em; }
+  h2 { font-size: clamp(33px, 8.4vw, 44px); line-height: 1.19; }
+  .hero-role { font-size: 16px; }
+  .hero-description { font-size: 16px; line-height: 1.76; }
+  .header nav { font-size: 15px; }
+  .section-label, .eyebrow, .card-index { font-size: 11px; }
+  .section-heading > p { font-size: 15px; }
+  .research-card h3 { font-size: 23px; }
+  .research-card > p { font-size: 15px; }
+  .paper h3 { font-size: 20px; line-height: 1.43; }
+  .paper-meta { font-size: 12.5px; }
+  .authors { font-size: 13.5px; }
+  .project h3, .timeline h3 { font-size: 23px; }
+  .current-heading h3 { font-size: 29px; }
+}
+@media (max-width: 380px) {
+  .hero h1 { font-size: 45px; }
+  .paper h3 { font-size: 19px; }
+  .hero-actions .button { font-size: 12.5px; }
+}
+@media print {
+  body { font: 11pt/1.5 Georgia, serif; }
+  h2, .paper h3, .research-card h3 { font-family: Georgia, serif; }
+  .hero h1 { font-family: Arial, sans-serif; font-size: 35pt; }
 }
